@@ -1,26 +1,18 @@
-// Last updated: 08/04/2026, 14:07:21
+// Last updated: 08/04/2026, 15:51:06
 1public class Solution {
-2    public IList<IList<int>> Generate(int numRows) {
-3     
-4        IList<IList<int>> triangle = new List<IList<int>>();
+2    public IList<int> GetRow(int rowIndex) {
+3        List<int> row = new List<int>();
+4        
 5
-6        for (int i=0; i<numRows; i++)
+6        for (int i=0; i<=rowIndex; i++)
 7        {
-8            List<int> row = new List<int>();
-9
-10            for (int j=0; j<=i; j++)
-11            {
-12                if(j==0||j==i)
-13                {
-14                   row.Add(1);
-15                }
-16                else
-17                {
-18                   row.Add(triangle[i-1][j-1] + triangle[i-1][j]);
-19                }
-20            }
-21            triangle.Add(row);
-22        }
-23        return triangle;
-24    }
-25}
+8            row.Add(1);
+9       
+10           for(int j=i-1; j>0; j--)
+11           {
+12            row[j]= row[j]+ row[j-1];
+13           }
+14        }
+15        return row;
+16    }
+17}
