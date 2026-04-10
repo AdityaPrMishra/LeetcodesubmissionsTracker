@@ -1,29 +1,36 @@
-// Last updated: 09/04/2026, 23:50:01
+// Last updated: 10/04/2026, 13:38:39
 1public class Solution {
 2    public void SortColors(int[] nums) {
-3        int count0=0;
-4        int count1=0;
-5        int count2=0;
+3        int low=0;
+4        int mid=0;
+5        int high=nums.Length-1;
 6
-7        for (int i = 0; i<nums.Length; i++)
+7        while(mid<=high)
 8        {
-9         if (nums[i]==0)
-10           count0++;
-11         else if(nums[i]==1)
-12           count1++;
-13         else
-14           count2++;
-15        }
-16
-17        int index=0;
-18
-19        for ( int i=0; i<count0; i++)
-20            nums[index++]=0;
-21        for ( int i=0; i<count1; i++)
-22            nums[index++]=1;
-23        for ( int i=0; i<count2; i++)
-24            nums[index++]=2;
-25        
-26    }
-27   
-28}
+9            if(nums[mid]==0)
+10            {
+11                swap(nums, low, mid);
+12                low++;
+13                mid++;
+14            }
+15            else if(nums[mid]==1)
+16            {
+17                mid++;
+18            }
+19            else
+20            {
+21                swap(nums, mid, high);
+22                high--;
+23            }
+24        }
+25    }
+26
+27     public void swap(int[] nums, int i, int j )
+28     {
+29         int temp = nums[i];
+30         nums[i]=nums[j];
+31         nums[j]=temp;
+32
+33     }  
+34   
+35}
